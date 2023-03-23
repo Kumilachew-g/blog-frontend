@@ -1,23 +1,19 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import articles from "./ArticleContent";
 
 const ArticlePage = () => {
+  const { name } = useParams();
+  const article = articles.find((article) => article.name === name);
+
+  if (!article) return <h1>Article does not exist!</h1>;
+
   return (
     <>
-      <h1>Articles </h1>
-      {articles.map((article, key) => {
-        return (
-          <Link
-            className="article-list-item"
-            key={key}
-            to={`/article/${article.name}`}
-          >
-            <h3>{article.title}</h3>
-            <p>{article.content[0].substring(0, 150)}...</p>
-          </Link>
-        );
-      })}
+      <h1>{article.title}</h1>
+      {article.content.map((paragraph, key) => (
+        <p key={key}>{paragraph}</p>
+      ))}
     </>
   );
 };
