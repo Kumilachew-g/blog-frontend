@@ -1,9 +1,21 @@
 import React from "react";
+import { Link } from "react-router-dom";
+import articles from "./ArticleContent";
 
-const ArticlePage = () => (
-  <>
-    <h1>This is an article page</h1>
-  </>
-);
+const ArticlePage = () => {
+  return (
+    <>
+      <h1>Articles </h1>
+      {articles.map((article, key) => {
+        return (
+          <Link key={key} to={`/article/${article.name}`}>
+            <h3>{article.title}</h3>
+            <p>{article.content[0].substring(0, 150)}...</p>
+          </Link>
+        );
+      })}
+    </>
+  );
+};
 
 export default ArticlePage;
