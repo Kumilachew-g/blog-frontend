@@ -2,7 +2,7 @@ import React from "react";
 
 const ArticlePage = () => (
   <>
-    <h1>This is an article</h1>
+    <h1>This is an article page</h1>
   </>
 );
 
