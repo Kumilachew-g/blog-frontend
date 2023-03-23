@@ -1,6 +1,7 @@
 import React from "react";
 import { useParams } from "react-router-dom";
 import articles from "./ArticleContent";
+import ArticlesList from "../components/ArticlesList";
 
 const ArticlePage = () => {
   const { name } = useParams();
@@ -15,6 +16,9 @@ const ArticlePage = () => {
       {article.content.map((paragraph, key) => (
         <p key={key}>{paragraph}</p>
       ))}
+
+      <h3>Other Articles:</h3>
+      <ArticlesList articles={otherArticles} />
     </>
   );
 };
