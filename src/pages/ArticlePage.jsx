@@ -1,23 +1,24 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { useParams } from "react-router-dom";
 import articles from "./ArticleContent";
+import ArticlesList from "../components/ArticlesList";
 
 const ArticlePage = () => {
+  const { name } = useParams();
+  const matchingArticle = articles.find((article) => article.name === name);
+
+  if (!matchingArticle) return <h1>Article does not exist!</h1>;
+
+  const otherArticles = articles.filter((article) => article.name !== name);
   return (
     <>
-      <h1>Articles </h1>
-      {articles.map((article, key) => {
-        return (
-          <Link
-            className="article-list-item"
-            key={key}
-            to={`/article/${article.name}`}
-          >
-            <h3>{article.title}</h3>
-            <p>{article.content[0].substring(0, 150)}...</p>
-          </Link>
-        );
-      })}
+      <h1>{matchingArticle.title}</h1>
+      {matchingArticle.content.map((paragraph, key) => (
+        <p key={key}>{paragraph}</p>
+      ))}
+
+      <h3>Other Articles:</h3>
+      <ArticlesList articles={otherArticles} />
     </>
   );
 };
