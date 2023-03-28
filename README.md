@@ -64,7 +64,7 @@ After you're finished please remove all the comments and instructions!
 
 > Describe your project in 1 or 2 sentences.
 
-**[Blog App]** is a...
+**[Blog App]** is a short for weblog frequently updated web page used for my personal commentary or business content.
 
 ## 🛠 Built With <a name="built-with"></a>
 
